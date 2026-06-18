@@ -1,0 +1,30 @@
+name = "netvault-pro"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+SEARCH_LOOKBACK = "30"
+RATE_LIMIT_PER_MIN = "10"
+SESSION_TTL_HOURS = "168"
+BACKUP_RETENTION = "3"
+# Zona waktu untuk jadwal backup (offset jam dari UTC). WIB = 7
+TZ_OFFSET = "7"
+# Auto-refresh pencarian bot: jeda antar cek (ms) & jumlah maksimal percobaan
+AUTO_REFRESH_MS = "5000"
+AUTO_REFRESH_MAX = "5"
+
+# Database D1 (buat dengan: wrangler d1 create netvault-pro)
+[[d1_databases]]
+binding = "DB"
+database_name = "netvault-pro"
+database_id = "GANTI_DENGAN_D1_ID"
+
+# Cron jalan tiap jam untuk cek jadwal backup otomatis
+[triggers]
+crons = ["0 * * * *"]
+
+# Secrets (set via: wrangler secret put <NAMA>):
+#   BOT_TOKEN       -> token bot dari @BotFather
+#   WEBHOOK_SECRET  -> string acak panjang untuk path webhook
+#   BACKUP_KEY      -> (opsional) kunci enkripsi file backup

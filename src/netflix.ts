@@ -29,6 +29,11 @@ const KEYWORDS: Record<CategoryKey, string[]> = {
 	signin: [
 		"sign-in code", "sign in code", "login code", "your code",
 		"kode masuk", "kode login", "temporary access code", "verification code",
+		"verify with this code", "enter this code", "enter this code to confirm",
+		"someone is trying to access your account", "access your account", "recognize this request",
+		"verifica con este código", "acceder a tu cuenta", "intentando acceder",
+		"vérifiez avec ce code", "accéder à votre compte", "verifique com este código",
+		"verifikasi dengan kode ini", "mengakses akun", "masuk ke akun",
 		"c\u00f3digo de inicio", "code de connexion", "anmeldecode", "\u30b5\u30a4\u30f3\u30a4\u30f3",
 	],
 	household: [
@@ -52,7 +57,7 @@ const KEYWORDS: Record<CategoryKey, string[]> = {
 		"verify your email", "email change", "update your email", "verifikasi email",
 		"ubah email", "confirm your email", "verificar", "v\u00e9rifier", "e-mail",
 		"confirm your account change", "account change", "confirm your account",
-		"change with this code", "with this code", "konfirmasi akun", "kode konfirmasi",
+		"change with this code", "konfirmasi akun", "kode konfirmasi",
 	],
 }
 
@@ -120,8 +125,10 @@ export function findLatest(
 		if (!matchesCategory(item.p.subject, item.p.text, cat)) continue
 		let value: string | undefined
 		if (category.kind === "code") {
-			const digits = cat === "signin" ? 4 : 6
-			value = extractCode(item.p.text, digits)
+			value =
+				cat === "signin"
+					? extractCode(item.p.text, 6) || extractCode(item.p.text, 4)
+					: extractCode(item.p.text, 6)
 		} else {
 			value = extractNetflixLink(item.p.html, item.p.text)
 		}

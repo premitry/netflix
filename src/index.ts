@@ -12,7 +12,7 @@ export default {
 
 		// Health check
 		if (request.method === "GET" && path === "/healthz") {
-			return new Response("FLIXVAULT OK \u00b7 build 2026-06-11r", { status: 200 })
+			return new Response("FLIXVAULT OK \u00b7 build 2026-06-20a", { status: 200 })
 		}
 
 		// Webhook Telegram: /webhook/<WEBHOOK_SECRET>

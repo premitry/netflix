@@ -228,7 +228,7 @@ export const APP_HTML = `<!doctype html><html lang="id"><head><meta charset="utf
 <label>Domain login web buyer (mis. parciv.net)</label><input id="br_domain" placeholder="parciv.net">
 <button id="br_save">Simpan Branding</button> <span id="br_msg" class="mut"></span></div></div>
 
-<div style="text-align:center;color:var(--mut);font-size:11px;margin-top:10px">build 2026-06-11r</div>
+<div style="text-align:center;color:var(--mut);font-size:11px;margin-top:10px">build 2026-06-20a</div>
 </div>
 <div id="modal" class="modal hide"><div class="modal-box"><button class="close-x" id="m_close" title="Tutup">✕</button><div id="m_body"></div></div></div>
 <script>
